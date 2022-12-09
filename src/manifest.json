@@ -1,0 +1,51 @@
+{
+    "update_url": "https://clients2.google.com/service/update2/crx",
+    "manifest_version": 3,
+    "name": "fiber-punk Web Camera Setup",
+    "description": "This extension enables you to add the fiber-punk web feed to you fiber-punk module so that the node app is not required ",
+    "version": "1.0.0",
+    "options_ui": {
+        "page": "options.html",
+        "open_in_tab": true,
+        "browser_style": true
+    },
+    "icons": {
+        "16": "icon16.png",
+        "48": "icon48.png",
+        "128": "icon128.png"
+    },
+    "content_scripts": [
+        {
+            "matches": [
+                "http://*:88/*"
+            ],
+            "run_at": "document_end",
+            "css": [
+                "library/css/node.css",
+                "library/css/bootstrap.min.css"
+            ],
+            "js": [
+                "library/jquery/jquery-3.6.min.js",
+                "library/inject/layer.min.js",
+                "library/inject/bootstrap.min.js",
+                "library/contentScript.js",
+                "library/findDevice.js"
+                
+            ]
+        }
+    ],
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "*.png",
+                "*.jpg"
+            ],
+            "matches": [
+                "http://*:88/*"
+            ]
+        }
+    ],
+    "permissions": [
+        "storage"
+    ]
+}
